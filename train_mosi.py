@@ -13,7 +13,7 @@ from tqdm import tqdm
 
 from torch.nn import MSELoss
 
-from transformers import get_linear_schedule_with_warmup, DebertaV2Tokenizer
+from transformers import get_linear_schedule_with_warmup, DebertaV2Tokenizer, DebertaV2Config
 from torch.optim import AdamW
 from KANMCP import KANMCP
 
@@ -246,7 +246,8 @@ def set_random_seed(seed: int):
 
 
 def prep_for_training(num_train_optimization_steps: int):
-    model = KANMCP.from_pretrained(args.model, multimodal_config=args, num_labels=1)
+    config = DebertaV2Config.from_pretrained(args.model, num_labels=1)
+    model = KANMCP(config, multimodal_config=args)
 
     model.to(DEVICE)
 
