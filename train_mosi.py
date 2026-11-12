@@ -1,7 +1,5 @@
 import argparse
 import os
-
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 import random
 import pickle
 import numpy as np
