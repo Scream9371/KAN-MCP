@@ -19,7 +19,7 @@ class KANMCP(DebertaV2PreTrainedModel):
         self.kan_hidden_neurons = multimodal_config.kan_hidden_neurons
 
         # Deberta
-        Deberta = DebertaV2Model.from_pretrained(multimodal_config.model)
+        Deberta = DebertaV2Model.from_pretrained(multimodal_config.model).float()
         self.Deberta = Deberta.to(DEVICE)
 
         # DRD-MIB
